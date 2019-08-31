@@ -60,22 +60,23 @@ MySamonConMet.prototype.calcCookieSoldEachHour = function(){
 
 for ( var k = 0; k < myCity.length; k++){
     new Mystores();
-    var ulEl = document.createElement('ul');
-    ulEl.textContent = `${myCity[k]} :`;
-    document.getElementById('Forcast').appendChild(ulEl);
+    //var ulEl = document.createElement('ul');
+    var trEl = document.createElement('tr');
+    trEl.textContent = `${myCity[k]} :`;
+    document.getElementById('forcastTable').appendChild(trEl);
 
         for ( var h = 0; h < myHours.length; h++){
-            var liEl = document.createElement('li');
-            new MySamonConMet(myMin[k],myMax[k]).calcCustomersEachHour();
+            var tdEL = document.createElement('td');
+            new MySamonConMet(myMin[k],myMax[k], myAve[k]).calcCustomersEachHour();
             new MySamonConMet(myMin[k],myMax[k],myAve[k]).calcCookieSoldEachHour();
             console.log(samonCookieStoreObj.cookiesSoldEachHourArr[h]);
-            liEl.textContent = `${myHours[h]}: ${samonCookieStoreObj.cookiesSoldEachHourArr[h]} cookies`;
-            document.getElementById('Forcast').appendChild(liEl);
+            tdEL.textContent = `${myHours[h]}: ${samonCookieStoreObj.cookiesSoldEachHourArr[h]} cookies`;
+            document.getElementById('forcastTable').appendChild(tdEL);
         }
 
-        liEl = document.createElement('li');
-        liEl.textContent = `Total: ${samonCookieStoreObj.totalPerDay} cookies \n`;
-        document.getElementById('Forcast').appendChild(liEl);
+        // liEl = document.createElement('li');
+        // liEl.textContent = `Total: ${samonCookieStoreObj.totalPerDay} cookies \n`;
+        // document.getElementById('Forcast').appendChild(liEl);
     }
 
 
