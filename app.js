@@ -6,37 +6,49 @@ var myMin= [23, 3, 11, 20, 20];
 var myMax= [65, 24, 38, 38, 16];
 var myAve= [6.3, 1.2, 3.7, 2.3, 4.6];
 
+
+var samonCookieStoreObj = {
+    //minCustomers: 23,
+    //maxCustomers: 65,
+    //avgCookiesPerCustomer: 6.3,
+    //myStore: '1st and Pike',
+    //myOpHours:[],
+    cookiesSoldEachHourArr : [],
+    customersPerHourArr : [],
+    totalPerDay : 0,
+    
+}
+
 function generateRandom(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-var samonCookieStoreObj = {
-    minCustomers: 23,
-    maxCustomers: 65,
-    avgCookiesPerCustomer: 6.3,
+function MySamonConMet (minCustomers, maxCustomers, avgCookiesPerCustomer) {
+    this.minCustomers = minCustomers;
+    this.maxCustomers = maxCustomers;
+    this.avgCookiesPerCustomer = avgCookiesPerCustomer;        
+};
 
-    cookiesSoldEachHourArr : [],
-    customersPerHourArr : [],
-    totalPerDay : 0,
-    myStore: '1st and Pike',
-    myOpHours:[],
+function Mystores (myStore, myOpHours) {
+    this.myStore = myStore;
+    this.myOpHours = myOpHours;
+};
 
-    calcCustomersEachHour: function(){
-        for(var i = 0; i < myHours.length; i++){
-            var customersEachHour = generateRandom(this.minCustomers, this.maxCustomers);
-            this.customersPerHourArr.push(customersEachHour);
-      
-          }
-        },
-        
-    calcCookieSoldEachHour : function(){
-        for(var i = 0; i < myHours.length; i++){
-            var oneHourOfSales = Math.floor(this.customersPerHourArr[i] * this.avgCookiesPerCustomer);
-            this.cookiesSoldEachHourArr.push(oneHourOfSales);
-            this.totalPerDay += oneHourOfSales;
-          }
-    },
-}
+MySamonConMet.prototype.calcCustomersEachHour = function(){
+    for(var i = 0; i < myHours.length; i++){
+        var customersEachHour = generateRandom(this.minCustomers, this.maxCustomers);
+        samonCookieStoreObj.customersPerHourArr.push(customersEachHour);
+      }
+};
+
+MySamonConMet.prototype.calcCookieSoldEachHour = function(){
+    for(var i = 0; i < myHours.length; i++){
+        var oneHourOfSales = Math.floor(samonCookieStoreObj.customersPerHourArr[i] * this.avgCookiesPerCustomer);
+        samonCookieStoreObj.cookiesSoldEachHourArr.push(oneHourOfSales);
+        samonCookieStoreObj.totalPerDay += oneHourOfSales;
+      }
+};
+
 
 // Testing my arrays and see if it works
 // samonCookieStoreObj.calcCustomersEachHour();
@@ -47,14 +59,16 @@ var samonCookieStoreObj = {
 
 
 for ( var k = 0; k < myCity.length; k++){
-    var liEl = document.createElement('ul');
-    liEl.textContent = `${myCity[k]} :`;
-    document.getElementById('Forcast').appendChild(liEl);
+    new Mystores();
+    var ulEl = document.createElement('ul');
+    ulEl.textContent = `${myCity[k]} :`;
+    document.getElementById('Forcast').appendChild(ulEl);
 
         for ( var h = 0; h < myHours.length; h++){
             var liEl = document.createElement('li');
-            samonCookieStoreObj.calcCustomersEachHour();
-            samonCookieStoreObj.calcCookieSoldEachHour();
+            new MySamonConMet(myMin[k],myMax[k]).calcCustomersEachHour();
+            new MySamonConMet(myMin[k],myMax[k],myAve[k]).calcCookieSoldEachHour();
+            console.log(samonCookieStoreObj.cookiesSoldEachHourArr[h]);
             liEl.textContent = `${myHours[h]}: ${samonCookieStoreObj.cookiesSoldEachHourArr[h]} cookies`;
             document.getElementById('Forcast').appendChild(liEl);
         }
