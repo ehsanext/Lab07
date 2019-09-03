@@ -3,41 +3,82 @@
 <html>
 
 <head>
-    
+
     <title>Samon Cookie Co. forcast</title>
-    
-    
+
+
 </head>
 <style>
-        tr {
-            border-style: solid;
-            border-inline: 1px;
-            border: 10px solid black;
-            text-align: center
-        }
-        td {
-            border-style: solid;
-            border-inline: 1px;
-            border: 1px solid black;
-            text-align: center
-        }
-        
-        </style>
+
+    header{
+
+        text-align: center;
+        font-size: 80px;
+        color: chocolate;
+    }
+    h1,
+    h2, h3 {
+
+        text-align: center;
+    }
+
+    tr {
+        border-style: solid;
+        border-inline: 1px;
+        border: 10px solid black;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    td, form{
+        border-style: solid;
+        border-inline: 1px;
+        border: 3px solid black;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .marginauto {
+    margin: 10px auto 20px;
+    display: block;
+}
+</style>
 
 <body>
-        
-    
-    <header> Welcome to Salmon Cookie website!</header>
-    
+
+
+    <header> Salmon Cookie Co. Ltd</header>
+
     <div>
         <img class="marginauto" src="img/salmon.png" alt="centered image" />
     </div>
-    
-    <h1>Here is our today's forcast:</h1>
-    
+
+    <h1 style="color:brown">Welcome to forcast page!</h1>
+    <form id="myinputform">
+            <fieldset>
+                    <h2>Please fill this form below if you want to add a new store:</h2>
+                    <label>Enter your new store name:</label>
+                    <input name=“storename” type=“text” ><br />
+        
+                    <label>Minimum Customer:</label>
+                    <input name=“mincustomer” type="number" /><br />
+        
+                    <label>Maximum Customer:</label>
+                    <input name=“maxcustomer” type="number"/><br />
+        
+                    <label>Average Number:</label>
+                    <input name=“avenumb” type="number" /><br />
+        
+                    <input type="submit" name="subscribe" value="submit" />
+        
+            </fieldset>
+        </form>
+    <h3>Here is our today's forcast:</h3>
+
     <div id="Forcast"></div>
 
     <table id="forcastTable"></table>
+    <table id="totalTable"></table>
 
 
     <footer>
@@ -45,4 +86,5 @@
     </footer>
     <script type="text/javascript" src="app.js"></script>
 </body>
+
 </html>
