@@ -1,4 +1,12 @@
 
+@import url('https://fonts.googleapis.com/css?family=Turret+Road&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed|Turret+Road&display=swap');
+
+body{
+
+    background-color: beige;
+}
+
 header{
     text-align: center;
     font-size: 20px;
@@ -14,4 +22,12 @@ header{
 p{
 
  font-size: 20px;
+ font-style: normal;
+ font-family: 'Turret Road', cursive;
+}
+h1 {
+    background-color: brown;
+    background-position: center;
+    background-position: initial;
+    font-family: 'Roboto Condensed', sans-serif;
 }
