@@ -1,0 +1,17 @@
+
+header{
+    text-align: center;
+    font-size: 20px;
+}
+
+.marginauto{
+
+    margin: 10px auto 20px;
+    display: block;
+
+}
+
+p{
+
+ font-size: 20px;
+}
